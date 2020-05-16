@@ -1,5 +1,5 @@
 # scrapy-scrapper
-Scrapy scrapper for collection information about 
+Scrapy scrapper for collecting information about 
 Morgan Lewis employees (https://www.morganlewis.com/our-people)
 
 ## About
