@@ -38,9 +38,9 @@ class MorganlewisSpider(scrapy.Spider):
             yield response.follow(href, callback=self.parse_profile)
 
         # follow next page
-        last_page_num = int(response.css('div.c-pagination a.last ::attr(data-pagenum)').get())
-        current_page_num = int(response.css('div.c-pagination a.selected ::attr(data-pagenum)').get())
-        if current_page_num < last_page_num:
+        last_page_num = response.css('div.c-pagination a.last ::attr(data-pagenum)').get()
+        current_page_num = response.css('div.c-pagination a.selected ::attr(data-pagenum)').get()
+        if last_page_num and int(current_page_num) < int(last_page_num):
             yield response.follow(self.generate_paging_url(page_num=current_page_num + 1), callback=self.parse)
 
     def parse_profile(self, response):
