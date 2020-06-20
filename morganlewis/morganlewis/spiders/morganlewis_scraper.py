@@ -46,8 +46,7 @@ class MorganlewisSpider(scrapy.Spider):
             vcard_url = response.css('div.thumbnail-details p.v-card a::attr(href)').get()
             return vcard_url.split('itemId=%7B')[-1][:-3]
 
-        def get_publications(response):
-            profile_data = response.meta['scrapped_data']
+        def get_publications(response, **profile_data):
             profile_data['publications'] = response.css('a::attr(title)').getall()
             yield profile_data
 
@@ -67,7 +66,7 @@ class MorganlewisSpider(scrapy.Spider):
         yield scrapy.Request(url="https://www.morganlewis.com/api/sitecore/accordion/getaccordionlist",
                              callback=get_publications,
                              method='POST',
-                             meta={'scrapped_data': profile_data},
+                             cb_kwargs=profile_data,
                              body=json.dumps({'itemId': '{' + get_person_id(response) + '}',
                                               'itemType': 'publicationitemlist',
                                               'printView': ''}),
