@@ -46,9 +46,9 @@ class MorganlewisSpider(scrapy.Spider):
             vcard_url = response.css('div.thumbnail-details p.v-card a::attr(href)').get()
             return vcard_url.split('itemId=%7B')[-1][:-3]
 
-        def get_publications(response, **profile_data):
-            profile_data['publications'] = response.css('a::attr(title)').getall()
-            yield profile_data
+        def get_publications(response, **kwargs):
+            kwargs['publications'] = response.css('a::attr(title)').getall()
+            yield kwargs
 
         profile_data = {
             'url': response.request.url,
