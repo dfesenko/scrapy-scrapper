@@ -52,8 +52,8 @@ def callback(ch, method, properties, body):
 
     sql = f"INSERT INTO People (Url, PhotoUrl, Fullname, Position, Phone_numbers, Email, Services, Sectors, Brief, " \
           f"Publications, ScrappingDate) VALUES ('{data['url']}', '{data['photo_url']}', '{data['full_name']}', " \
-          f"'{data['position']}', '{data['phone_numbers']}', '{data['email']}', '{data['services']}', '{data['sectors']}', " \
-          f"'{data['person_brief']}', '{data['publications']}', '{data['scrapping_datetime']}');"
+          f"'{data['position']}', '{data['phone_numbers']}', '{data['email']}', '{data['services']}', " \
+          f"'{data['sectors']}', '{data['person_brief']}', '{data['publications']}', '{data['scrapping_datetime']}');"
 
     engine.execute(sql)
 
