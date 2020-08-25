@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS People (
  Phone_numbers VARCHAR(255),
  Email VARCHAR(255),
  Services VARCHAR(1500),
- Sectors VARCHAR(255),
+ Sectors VARCHAR(1500),
  Brief TEXT,
  Publications TEXT,
  ScrappingDate DATETIME,
